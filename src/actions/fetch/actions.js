@@ -8,13 +8,37 @@ const API_URL = "https://hapi.herrguller.cc/";
 
 export async function getProduct(reqData) {
   try {
-    const accessToken = await getAccessToken();
     var config = {
       method: "get",
       url: API_URL + "get/product?id=" + reqData.ID,
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + accessToken,
+      },
+    };
+    var result = await axios(config)
+      .then(function (response) {
+        return response.data;
+      })
+      .catch(function (error) {
+        if (error?.response) {
+          return error?.response?.data;
+        } else {
+          throw "Server error.";
+        }
+      });
+    return result;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function getLandingProducts() {
+  try {
+    var config = {
+      method: "get",
+      url: API_URL + "get/landing/products",
+      headers: {
+        "Content-Type": "application/json",
       },
     };
     var result = await axios(config)

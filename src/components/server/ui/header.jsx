@@ -2,8 +2,9 @@
 
 import { getCategories } from "@/actions/fetch/actions";
 import Logo from "@/assets/img/logo.svg";
-import { formatPrettyURL, readCookie } from "@/assets/js/helpers";
+import { readCookie } from "@/assets/js/helpers";
 import Logout from "@/components/client/ui/logout";
+import NavbarCategories from "@/components/client/ui/navbar/navCategories";
 import { cookies } from "next/headers";
 import Image from "next/image";
 
@@ -14,8 +15,8 @@ export default async function Header() {
   const categories = await getCategories();
 
   return (
-    <nav className="flex-column flex-center">
-      <div className="navbar-header flex w-full h-full flex-row flex-end">
+    <nav className="bg flex-column flex-center">
+      <div className="navbar-header flex w-full h-full flex-row flex-center">
         <a
           className="flex-row flex-center logo no-select screen"
           aria-label="Home"
@@ -36,19 +37,7 @@ export default async function Header() {
         )}
       </div>
       <span className="navbar-seperator" />
-      <div className="navbar-categories flex w-full h-full flex-row flex-center">
-        <ul className="list h-full flex-row flex-center">
-          {categories
-            ?.filter((c) => !c.Parent.ID)
-            .map((category) => (
-              <li key={category.ID} className="h-full">
-                <a className="h-full flex-row flex-center padding bold" href={`/category/${formatPrettyURL(category.Name)}`}>
-                  {category.Name}
-                </a>
-              </li>
-            ))}
-        </ul>
-      </div>
+      <NavbarCategories categories={categories} />
       <span className="navbar-seperator" />
     </nav>
   );
