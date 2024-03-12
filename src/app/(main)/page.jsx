@@ -9,7 +9,6 @@ import Image from "next/image";
 
 export default async function Main() {
   const products = await getLandingProducts();
-
   return (
     <>
       <Header />

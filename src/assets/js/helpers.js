@@ -60,10 +60,12 @@ export function buildFilter(filterData) {
   let filter = {
     id: filterData.id ? filterData.id : 0,
     keyword: filterData.keyword ? filterData.keyword : null,
+    category: filterData.category ? filterData.category : null,
+    brand: filterData.brand ? filterData.brand : null,
+    material: filterData.material ? filterData.material : null,
     page: filterData.page ?? 1,
     sortby: filterData.sortby ?? "desc",
     isActive: filterData.isActive ?? true,
-    token: filterData.token,
   };
   return filter;
 }
