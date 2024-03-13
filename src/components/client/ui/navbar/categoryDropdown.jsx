@@ -18,7 +18,7 @@ export default function CategoryDropdown({
           <li key={category.ID} className="h-full w-full flex-row flex-center">
             <a
               className="h-full w-full flex-row flex-center"
-              href={`/category/${formatPrettyURL(category.Name)}`}
+              href={`/products/?categories=${formatPrettyURL(category.Name)}`}
             >
               {category.Name}
             </a>

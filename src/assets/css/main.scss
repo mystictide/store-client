@@ -134,6 +134,9 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+.align-start {
+    align-items: flex-start;
+}
 .half-gap {
     row-gap: 0.4rem;
     column-gap: 0.4rem;
@@ -529,19 +532,30 @@ button.large {
         max-width: 1250px;
 
         .content {
-            width: calc(100% - 350px);
+            width: calc(100% - 320px);
             height: 100%;
             display: flex;
             margin-bottom: 5rem;
-            padding: 2rem;
+            padding: 2rem 0.5rem;
 
             .content-main {
                 padding-top: 2rem;
                 padding-bottom: 2rem;
             }
-            .return {
-                position: absolute;
-                left: 10px;
+            .product-box {
+                width: 250px;
+                height: 360px;
+                .product-image {
+                    height: 298px;
+                    img {
+                        border: 1px solid $variant;
+                    }
+                }
+                .product-overview {
+                    width: 250px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
             }
         }
         .banner {
@@ -590,8 +604,8 @@ button.large {
             }
         }
         .sidebar {
-            width: 350px;
-            height: 100%;
+            width: 320px;
+            height: auto;
             position: sticky;
             top: 50px;
         }
@@ -615,10 +629,10 @@ button.large {
         input {
             height: 50px;
             &::placeholder {
-                font-size: 17px;
+                font-size: 16px;
             }
             &::-ms-input-placeholder {
-                font-size: 17px;
+                font-size: 16px;
             }
         }
         select {
@@ -639,6 +653,7 @@ button.large {
         height: auto;
         .sidebar {
             height: 100%;
+            margin-top: 3rem;
         }
     }
 }

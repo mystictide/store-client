@@ -1,27 +1,40 @@
 "use server";
 
+import { getBrands, getCategories } from "@/actions/fetch/actions";
 import { filterProducts } from "@/actions/filters/actions";
 import Empty from "@/assets/img/empty.png";
 import { buildFilter } from "@/assets/js/helpers";
 import ProductsFilter from "@/components/server/filters/productsFilter";
 import ProductsList from "@/components/server/lists/productsList";
+import Footer from "@/components/server/ui/footer";
 import Header from "@/components/server/ui/header";
 import Image from "next/image";
 
-export default async function Category({ params }) {
+export default async function Products({ searchParams }) {
+
   const filter = buildFilter({
-    category: params.name,
-    page: null,
-    sortby: null,
+    keyword: searchParams.keyword,
+    categories: searchParams.categories,
+    brands: searchParams.brands,
+    materials: searchParams.materials,
+    colors: searchParams.colors,
+    page: searchParams.page,
+    sortby: searchParams.sortby,
   });
 
+  const categories = await getCategories();
+  const brands = await getBrands();
   const products = await filterProducts(filter);
 
   return (
     <>
       <Header />
       <div className="content-wrapper flex-row">
-        <ProductsFilter filter={filter} />
+        <ProductsFilter
+          categories={categories}
+          brands={brands}
+          filter={filter}
+        />
         <div className="content flex-column">
           <div className="flex-column">
             {products?.data?.length > 0 ? (
@@ -37,6 +50,7 @@ export default async function Category({ params }) {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

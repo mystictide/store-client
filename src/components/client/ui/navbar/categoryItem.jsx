@@ -1,6 +1,5 @@
 "use client";
 
-import { formatPrettyURL } from "@/assets/js/helpers";
 import { useState } from "react";
 import CategoryDropdown from "./categoryDropdown";
 
@@ -13,12 +12,9 @@ export default function CategoryItem({ categories, category }) {
       onMouseEnter={() => setDropdownVisible(true)}
       onMouseLeave={() => setDropdownVisible(false)}
     >
-      <a
-        className="h-full flex-row flex-center padding bold"
-        href={`/category/${formatPrettyURL(category.Name)}`}
-      >
+      <h4 className="h-full flex-row flex-center padding bold no-select">
         {category.Name}
-      </a>
+      </h4>
       {isDropdownVisible ? (
         <CategoryDropdown
           category={category}
