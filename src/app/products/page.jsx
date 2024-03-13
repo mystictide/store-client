@@ -1,6 +1,6 @@
 "use server";
 
-import { getBrands, getCategories } from "@/actions/fetch/actions";
+import { getBrands, getCategories, getColors, getMaterials } from "@/actions/fetch/actions";
 import { filterProducts } from "@/actions/filters/actions";
 import Empty from "@/assets/img/empty.png";
 import { buildFilter } from "@/assets/js/helpers";
@@ -24,6 +24,8 @@ export default async function Products({ searchParams }) {
 
   const categories = await getCategories();
   const brands = await getBrands();
+  const materials = await getMaterials();
+  const colors = await getColors();
   const products = await filterProducts(filter);
 
   return (
@@ -33,6 +35,8 @@ export default async function Products({ searchParams }) {
         <ProductsFilter
           categories={categories}
           brands={brands}
+          materials={materials}
+          colors={colors}
           filter={filter}
         />
         <div className="content flex-column">

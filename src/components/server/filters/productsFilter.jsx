@@ -4,11 +4,19 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Select from "react-select";
 
-export default function ProductsFilter({ categories, brands, filter }) {
+export default function ProductsFilter({
+  categories,
+  brands,
+  materials,
+  colors,
+  filter,
+}) {
   const router = useRouter();
   const [filterHidden, setFilterHidden] = useState(true);
   const [category, setCategory] = useState(null);
   const [brand, setBrand] = useState(null);
+  const [material, setMaterial] = useState(null);
+  const [color, setColor] = useState(null);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -26,6 +34,12 @@ export default function ProductsFilter({ categories, brands, filter }) {
     }
     if (brand?.length > 0) {
       url += `&brands=${brand?.map((x) => x.Name)}`;
+    }
+    if (material?.length > 0) {
+      url += `&materials=${material?.map((x) => x.Name)}`;
+    }
+    if (color?.length > 0) {
+      url += `&colors=${color?.map((x) => x.Name)}`;
     }
     return url;
   };
@@ -69,6 +83,21 @@ export default function ProductsFilter({ categories, brands, filter }) {
                 isSearchable
                 isMulti
               />
+              <h5>Product Materials</h5>
+              <Select
+                instanceId="materials"
+                id="materials"
+                name="materials"
+                className="r-select"
+                classNamePrefix="r-select"
+                value={material}
+                onChange={setMaterial}
+                options={materials}
+                getOptionLabel={(options) => options["Name"]}
+                getOptionValue={(options) => options["Name"]}
+                isSearchable
+                isMulti
+              />
               <h5>Brands</h5>
               <Select
                 instanceId="brands"
@@ -79,6 +108,21 @@ export default function ProductsFilter({ categories, brands, filter }) {
                 value={brand}
                 onChange={setBrand}
                 options={brands}
+                getOptionLabel={(options) => options["Name"]}
+                getOptionValue={(options) => options["Name"]}
+                isSearchable
+                isMulti
+              />
+              <h5>Color options</h5>
+              <Select
+                instanceId="colors"
+                id="colors"
+                name="colors"
+                className="r-select"
+                classNamePrefix="r-select"
+                value={color}
+                onChange={setColor}
+                options={colors}
                 getOptionLabel={(options) => options["Name"]}
                 getOptionValue={(options) => options["Name"]}
                 isSearchable
