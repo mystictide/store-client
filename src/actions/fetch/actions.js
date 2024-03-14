@@ -9,7 +9,7 @@ export async function getProduct(reqData) {
   try {
     var config = {
       method: "get",
-      url: API_URL + "get/product?id=" + reqData.ID,
+      url: API_URL + "get/product?name=" + reqData,
       headers: {
         "Content-Type": "application/json",
       },
