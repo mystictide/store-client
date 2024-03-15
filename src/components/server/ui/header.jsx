@@ -5,6 +5,7 @@ import Logo from "@/assets/img/logo.svg";
 import { readCookie } from "@/assets/js/helpers";
 import Logout from "@/components/client/ui/logout";
 import NavbarCategories from "@/components/client/ui/navbar/navCategories";
+import AuthClient from "@/components/client/user/accounts/authClient";
 import { cookies } from "next/headers";
 import Image from "next/image";
 
@@ -33,7 +34,7 @@ export default async function Header() {
             <Logout />
           </section>
         ) : (
-          ""
+          <AuthClient />
         )}
       </div>
       <span className="navbar-seperator" />

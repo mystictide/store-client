@@ -15,7 +15,11 @@ export default async function Main() {
       <div className="content-wrapper">
         <div className="flex-row flex-center banner no-select">
           <h1>Homie</h1>
-          <Image alt="homie banner" src={Banner} priority />
+          <Image
+            alt="homie banner"
+            src={Banner}
+            priority
+          />
         </div>
         <section className="flex-column flex-start padding">
           <h1 className="">Living Room</h1>

@@ -10,25 +10,25 @@ export default function ProductImages({ images }) {
   const [image, setImage] = useState(images[0]);
 
   return (
-    <div className="flex-column padding product-images">
+    <div className="flex-column product-images">
       <section className="current">
         <Image
           alt={"product image"}
           src={srcURL + image.ProductID + "/" + image.Source}
-          width={550}
-          height={600}
+          width={450}
+          height={500}
           priority
         />
       </section>
       <section className="available">
-        <ul className="flex-row">
+        <ul className="flex-row flex-wrap">
           {images.map((item) => (
             <li key={item.ID} onClick={(e) => setImage(item)}>
               <Image
                 alt={"product image"}
                 src={srcURL + item.ProductID + "/" + item.Source}
-                width={85}
-                height={105}
+                width={80}
+                height={100}
                 priority
               />
             </li>
