@@ -26,7 +26,7 @@ export default function ProductBox({ product }) {
       </a>
       <section className="flex-column product-overview">
         <h5>{product.Name}</h5>
-        <span className="flex-row flex-divide">
+        <span className="pricing flex-row flex-divide">
           <h5>€{product.Price}</h5>
           <a
             target="_blank"

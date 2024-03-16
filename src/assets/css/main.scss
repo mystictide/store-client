@@ -299,6 +299,7 @@ button.icon {
     @include text-transition();
     svg {
         height: 100%;
+        color: $variant;
     }
     &:hover {
         svg {
@@ -620,6 +621,15 @@ button.large {
             width: 100%;
             padding: 0 2rem;
             column-gap: 2.5rem;
+
+            .product-description {
+                width: 77%;
+                h5 {
+                    text-align: justify;
+                    line-height: 1.5;
+                    font-weight: 500;
+                }
+            }
         }
         .product-images {
             .current {
@@ -740,23 +750,82 @@ button.large {
     .mobile-hide {
         display: none !important;
     }
-    .screen {
-        display: inherit !important;
-    }
-    .mobile-link {
-        width: 75% !important;
-    }
     .content-wrapper {
         flex-direction: column;
+        .sidebar-view {
+            padding: 1rem 0;
+            justify-content: center;
+            .sidebar {
+                width: 80%;
+            }
+        }
         .m-view {
             margin-top: 1rem;
             height: 45px;
             display: block !important;
         }
+        .banner {
+            h1 {
+                bottom: 1.6rem !important;
+                font-size: 5rem !important;
+            }
+            img {
+                width: 100% !important;
+            }
+        }
     }
     .content {
-        margin-top: 10%;
+        margin-top: 1rem;
         width: 100% !important;
+        .product-description {
+            width: 100% !important;
+        }
+        .products-list {
+            width: 100% !important;
+            flex-direction: row;
+            justify-content: center;
+            .product-box {
+                width: 205px !important;
+                height: 320px !important;
+                .flex-column {
+                    width: 205px !important;
+                    row-gap: 0;
+                    column-gap: 0;
+                    a {
+                        width: 205px !important;
+                        height: 270px !important;
+                        img {
+                            width: 205px !important;
+                            height: 260px !important;
+                        }
+                    }
+                }
+
+                .product-overview {
+                    height: 40px;
+                    row-gap: 0;
+                    .pricing {
+                        height: 30px;
+                        h5 {
+                            font-size: 0.75rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .content.flex-row {
+        flex-direction: column;
+        row-gap: 2rem;
+
+        .product-images {
+            width: 100%;
+            .current {
+                img {
+                    width: 100%;
+                }
+            }
+        }
     }
 }
 
@@ -766,14 +835,79 @@ button.large {
     }
     .content-wrapper {
         flex-direction: column;
+        .sidebar-view {
+            padding: 1rem 0;
+            justify-content: center;
+            .sidebar {
+                width: 80%;
+            }
+        }
         .m-view {
             margin-top: 1rem;
             height: 45px;
             display: block !important;
         }
+        .banner {
+            h1 {
+                bottom: 1.6rem !important;
+                font-size: 5rem !important;
+            }
+            img {
+                width: 100% !important;
+            }
+        }
     }
     .content {
-        margin-top: 10%;
+        margin-top: 1rem;
         width: 100% !important;
+        .product-description {
+            width: 100% !important;
+        }
+        .products-list {
+            width: 100% !important;
+            flex-direction: row;
+            justify-content: center;
+            .product-box {
+                width: 205px !important;
+                height: 320px !important;
+                .flex-column {
+                    width: 205px !important;
+                    row-gap: 0;
+                    column-gap: 0;
+                    a {
+                        width: 205px !important;
+                        height: 270px !important;
+                        img {
+                            width: 205px !important;
+                            height: 260px !important;
+                        }
+                    }
+                }
+
+                .product-overview {
+                    height: 40px;
+                    row-gap: 0;
+                    .pricing {
+                        height: 30px;
+                        h5 {
+                            font-size: 0.75rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .content.flex-row {
+        flex-direction: column;
+        row-gap: 2rem;
+
+        .product-images {
+            width: 100%;
+            .current {
+                img {
+                    width: 100%;
+                }
+            }
+        }
     }
 }

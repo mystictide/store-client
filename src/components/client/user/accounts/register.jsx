@@ -8,7 +8,8 @@ import { BarLoader } from "react-spinners";
 
 export default function Register({ setRegState, setModal }) {
   const [formData, setFormData] = useState({
-    name: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
   });
@@ -17,14 +18,13 @@ export default function Register({ setRegState, setModal }) {
     vPassword: true,
   });
   const [emailExists, setEmailExists] = useState(false);
-  const { name, email, password } = formData;
+  const { firstname, lastname, email, password } = formData;
   const { vPassword } = formValidation;
 
   useEffect(() => {
     const validateMail = setTimeout(async () => {
       if (email.length > 0) {
-        let reqData = { email, company: true };
-        let res = await checkExistingEmail(reqData);
+        let res = await checkExistingEmail(email);
         setEmailExists(res);
       }
     }, 2000);
@@ -50,8 +50,13 @@ export default function Register({ setRegState, setModal }) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const userData = { id: 0, name, email, password };
-    if (!vPassword && name.length > 0 && !emailExists) {
+    const userData = { id: 0, firstname, lastname, email, password };
+    if (
+      !vPassword &&
+      firstname.length > 0 &&
+      lastname.length > 0 &&
+      !emailExists
+    ) {
       await register(userData);
     }
   };
@@ -72,20 +77,35 @@ export default function Register({ setRegState, setModal }) {
         <div className="bg padding radius w-400">
           <h1 className="text-center no-select">Sign up</h1>
           <form className="flex-column" onSubmit={onSubmit}>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={name}
-              placeholder="first Name"
-              onChange={(e) =>
-                setFormData((prevState) => ({
-                  ...prevState,
-                  [e.target.name]: e.target.value,
-                }))
-              }
-            />
-            {name.length < 1 ? (
+            <div className="flex-row">
+              <input
+                type="text"
+                id="firstname"
+                name="firstname"
+                value={firstname}
+                placeholder="First Name"
+                onChange={(e) =>
+                  setFormData((prevState) => ({
+                    ...prevState,
+                    [e.target.name]: e.target.value,
+                  }))
+                }
+              />
+              <input
+                type="text"
+                id="lastname"
+                name="lastname"
+                value={lastname}
+                placeholder="Last Name"
+                onChange={(e) =>
+                  setFormData((prevState) => ({
+                    ...prevState,
+                    [e.target.name]: e.target.value,
+                  }))
+                }
+              />
+            </div>
+            {lastname.length < 1 || lastname.length < 1 ? (
               <label className="text-small error">Name can not be empty</label>
             ) : (
               ""
@@ -131,9 +151,12 @@ export default function Register({ setRegState, setModal }) {
               ""
             )}
             <div className="flex-column">
-              {vPassword || name.length < 1 || emailExists ? (
+              {vPassword ||
+              firstname.length < 1 ||
+              lastname.length < 1 ||
+              emailExists ? (
                 <BarLoader
-                  color="#74aa9f"
+                  color="#ffd86b"
                   height={10}
                   loading
                   speedMultiplier={0.6}

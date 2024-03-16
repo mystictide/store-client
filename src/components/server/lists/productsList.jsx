@@ -7,7 +7,7 @@ export default async function ProductsList({ products }) {
   return (
     <>
       <Pager data={products} url={"/products"} />
-      <ul className="w-full flex-row flex-wrap">
+      <ul className="w-full flex-row flex-wrap products-list">
         {products.data?.map((product) => (
           <li key={product.ID} className="flex-row w-full product-box">
             <ProductBox product={product} />

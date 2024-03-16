@@ -26,16 +26,7 @@ export default async function Header() {
           <Image alt="homie logo" src={Logo} />
           <h1>omie</h1>
         </a>
-        {user ? (
-          <section
-            className="flex-row half-gap"
-            style={{ position: "relative" }}
-          >
-            <Logout />
-          </section>
-        ) : (
-          <AuthClient />
-        )}
+        {user ? <Logout /> : <AuthClient />}
       </div>
       <span className="navbar-seperator" />
       <NavbarCategories categories={categories} />

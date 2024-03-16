@@ -4,7 +4,7 @@ import CategoryItem from "./categoryItem";
 
 export default function NavbarCategories({ categories }) {
   return (
-    <div className="navbar-categories flex w-full h-full flex-column flex-start">
+    <div className="navbar-categories flex w-full h-full flex-column flex-start mobile-hide">
       <ul className="list nav h-full flex-row flex-center">
         {categories[0].ID
           ? categories

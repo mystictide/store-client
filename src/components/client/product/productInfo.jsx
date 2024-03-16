@@ -4,7 +4,7 @@ import { formatPrettyURL } from "@/assets/js/helpers";
 import { useState } from "react";
 import ProductCart from "./productCart";
 
-export default function ProductInfo({ product }) {
+export default function ProductInfo({ user, product }) {
   const [color, setColor] = useState(product.Colors[0]);
   const [inStock, setInStock] = useState(
     product.Stocks.find((x) => x.ColorID === color.ID).Amount > 0 ? true : false
@@ -45,19 +45,15 @@ export default function ProductInfo({ product }) {
       <div className="flex-column color-options">
         <h3>€{product.Prices.find((x) => (x.ColorID = color.ID)).Amount}</h3>
       </div>
-      {inStock ? <ProductCart product={product} color={color} /> : ""}
+      {inStock ? (
+        <ProductCart user={user} product={product} color={color} />
+      ) : (
+        ""
+      )}
       <section className="flex-column" style={{ marginTop: "auto" }}>
-        <div className="flex-column" style={{ width: "77%" }}>
+        <div className="flex-column product-description">
           <h4>Product Description</h4>
-          <h5
-            style={{
-              textAlign: "justify",
-              lineHeight: "1.5",
-              fontWeight: "500",
-            }}
-          >
-            {product.Description}
-          </h5>
+          <h5>{product.Description}</h5>
         </div>
         <div className="flex-column">
           <h4>Product Specifications</h4>
