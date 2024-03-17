@@ -1,6 +1,6 @@
 "use server";
 
-import { getProduct } from "@/actions/fetch/actions";
+import { getCart, getProduct } from "@/actions/fetch/actions";
 import { decodeURL, readCookie } from "@/assets/js/helpers";
 import Breadcrumbs from "@/components/client/product/breadcrumbs";
 import ProductImages from "@/components/client/product/productImages";
@@ -14,6 +14,7 @@ export default async function ProductView({ params }) {
   const user = await readCookie(cookieStore, "client");
   
   const product = await getProduct(decodeURL(params.name));
+  const cart = await getCart();
   return (
     <>
       <Header />
@@ -21,7 +22,7 @@ export default async function ProductView({ params }) {
         <Breadcrumbs category={product.Category} />
         <div className="content flex-row">
           <ProductImages images={product.Images} />
-          <ProductInfo user={user} product={product} />
+          <ProductInfo user={user} cart={cart} product={product} />
         </div>
       </div>
       <Footer />

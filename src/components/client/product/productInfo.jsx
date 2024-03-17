@@ -4,7 +4,7 @@ import { formatPrettyURL } from "@/assets/js/helpers";
 import { useState } from "react";
 import ProductCart from "./productCart";
 
-export default function ProductInfo({ user, product }) {
+export default function ProductInfo({ user, cart, product }) {
   const [color, setColor] = useState(product.Colors[0]);
   const [inStock, setInStock] = useState(
     product.Stocks.find((x) => x.ColorID === color.ID).Amount > 0 ? true : false
@@ -46,7 +46,7 @@ export default function ProductInfo({ user, product }) {
         <h3>€{product.Prices.find((x) => (x.ColorID = color.ID)).Amount}</h3>
       </div>
       {inStock ? (
-        <ProductCart user={user} product={product} color={color} />
+        <ProductCart user={user} cart={cart} product={product} color={color}/>
       ) : (
         ""
       )}

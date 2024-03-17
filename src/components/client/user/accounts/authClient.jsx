@@ -13,7 +13,7 @@ export default function AuthClient() {
     <>
       <button
         type="button"
-        className="flex-row flex-center account interactive"
+        className="flex-row flex-center interactive"
         onClick={() => setModal((prev) => !prev)}
       >
         <RiAccountPinBoxFill />

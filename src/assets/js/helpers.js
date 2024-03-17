@@ -1,5 +1,8 @@
-export function readCookie(cookieStore, name) {
+export function readCookie(cookieStore, name, token) {
   const cookie = cookieStore.get(name) ? cookieStore.get(name)?.value : null;
+  if (token) {
+    return cookie;
+  }
   const res = cookie ? JSON.parse(cookie) : null;
   return res;
 }
