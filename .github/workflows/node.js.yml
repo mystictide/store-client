@@ -46,7 +46,7 @@ jobs:
           cd /var/www/homie.herrguller.cc
           sudo rm -r store-client
           sudo git clone https://github.com/mystictide/store-client.git
-          cd issues-client
+          cd store-client
           sudo npm install
           sudo npm run build
-          pm2 start "npm run start -- -p 8282" --name store-client
+          pm2 start "npm run start -- -p 7071" --name store-client
