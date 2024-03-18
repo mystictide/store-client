@@ -7,7 +7,7 @@ export default function Logout() {
   return (
     <button
       aria-label="sign out"
-      className="flex-row icon"
+      className="flex-row flex-center interactive"
       onClick={() => logout()}
     >
       <FaSignOutAlt />

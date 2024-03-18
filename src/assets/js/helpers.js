@@ -1,5 +1,8 @@
-export function readCookie(cookieStore, name) {
+export function readCookie(cookieStore, name, token) {
   const cookie = cookieStore.get(name) ? cookieStore.get(name)?.value : null;
+  if (token) {
+    return cookie;
+  }
   const res = cookie ? JSON.parse(cookie) : null;
   return res;
 }
@@ -60,10 +63,13 @@ export function buildFilter(filterData) {
   let filter = {
     id: filterData.id ? filterData.id : 0,
     keyword: filterData.keyword ? filterData.keyword : null,
+    categories: filterData.categories ? filterData.categories.split(",") : "",
+    brands: filterData.brands ? filterData.brands.split(",") : "",
+    materials: filterData.materials ? filterData.materials.split(",") : "",
+    colors: filterData.colors ? filterData.colors.split(",") : "",
     page: filterData.page ?? 1,
     sortby: filterData.sortby ?? "desc",
     isActive: filterData.isActive ?? true,
-    token: filterData.token,
   };
   return filter;
 }

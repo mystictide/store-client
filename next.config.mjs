@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: false,
-  };
-  
-  export default nextConfig;
-  
+  reactStrictMode: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "hapi.herrguller.cc",
+      },
+    ],
+  },
+};
+
+export default nextConfig;
