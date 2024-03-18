@@ -179,7 +179,7 @@ export async function getCart() {
       })
       .catch(function (error) {
         if (error?.response) {
-          return error?.response?.data;
+          return null;
         } else {
           throw "Server error.";
         }
