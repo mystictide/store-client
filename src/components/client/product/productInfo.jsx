@@ -43,10 +43,10 @@ export default function ProductInfo({ user, cart, product }) {
         <h4>{inStock ? "In stock" : "Out of stock"}</h4>
       </div>
       <div className="flex-column color-options">
-        <h3>€{product.Prices.find((x) => (x.ColorID = color.ID)).Amount}</h3>
+        <h3>€{product.Prices.find((x) => (x.ColorID === color.ID)).Amount}</h3>
       </div>
       {inStock ? (
-        <ProductCart user={user} cart={cart} product={product} color={color}/>
+        <ProductCart user={user} cart={cart} product={product} color={color} />
       ) : (
         ""
       )}
